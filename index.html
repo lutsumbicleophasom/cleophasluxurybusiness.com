@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cléophas Luxury Business — Boutique de Luxe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <!-- Logo SVG -->
+      <a href="#" class="logo-link" onclick="resetFilters();return false;">
+        <svg width="46" height="46" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <rect width="64" height="64" rx="12" fill="black"/>
+          <g transform="translate(6,6)" fill="none" stroke="#d4af37" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0 28 L14 0 L28 28" />
+            <circle cx="14" cy="20" r="3" fill="#d4af37" stroke="none"/>
+          </g>
+        </svg>
+        <div class="brand-text">
+          <div class="brand-title">Cléophas Luxury Business</div>
+          <div class="brand-sub">Casques VR · Supercars · Montres · Bijoux</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="controls">
+      <div class="search-wrap">
+        <input id="search" type="search" placeholder="Rechercher un produit..." />
+      </div>
+
+      <div class="category-wrap">
+        <select id="category-select" aria-label="Filtrer par catégorie">
+          <option value="all">Toutes catégories</option>
+          <option value="vr">VR</option>
+          <option value="cars">Voitures</option>
+          <option value="watches">Montres</option>
+          <option value="jewelry">Bijoux</option>
+        </select>
+      </div>
+
+      <button id="theme-toggle" class="btn small">☼</button>
+      <button id="cart-btn" class="btn small" onclick="openCart()">Panier (<span id="cart-count">0</span>)</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Vivez l'expérience — Technologie, Vitesse & Élégance</h1>
+        <p class="muted">Sélection premium de casques VR, Lamborghini, montres et bijoux. Projet e-commerce — Cléophas Luxury Business.</p>
+        <div class="hero-actions">
+          <button class="btn" onclick="filterBy('jewelry')">Découvrir les bijoux</button>
+          <button class="outline" onclick="filterBy('cars')">Supercars</button>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img alt="luxe" src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/news/2025/11_26_few_offs/s1.jpg">
+      </div>
+    </section>
+
+    <section class="section-title">
+      <h2>Sélection Luxe</h2>
+      <p class="muted">Filtrez, recherchez et cliquez sur "Voir" pour ouvrir la page produit.</p>
+    </section>
+
+    <section id="products-grid" class="grid products-grid">
+      <!-- produits injectés par script.js -->
+    </section>
+
+    <!-- Bandeau bijoux spécial -->
+    <section class="bandeau">
+      <div class="bandeau-content">
+        <h3>Bijoux de Luxe — Collection Premium</h3>
+        <p class="muted">Or 18K • Argent • Diamants — Conçus pour l’élégance.</p>
+        <button class="btn" onclick="filterBy('jewelry')">Voir la collection</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div>© <strong>Cléophas Luxury Business</strong> — Boutique de démonstration. Contact: demo@cleophas.example</div>
+    <div class="muted">Projet e-commerce — pour cours</div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <aside id="cart" class="cart-sidebar" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Mon Panier</h3>
+      <button class="outline" onclick="closeCart()">Fermer</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-summary">
+      <div>Total</div>
+      <div id="cart-total" class="price">€0</div>
+    </div>
+    <div class="cart-actions">
+      <button class="outline" onclick="clearCart()">Vider</button>
+      <button class="btn" onclick="checkout()">Passer commande</button>
+    </div>
+  </aside>
+
+  <!-- Product Modal -->
+  <div id="product-modal" class="modal" aria-hidden="true">
+    <div class="modal-panel">
+      <button class="modal-close" onclick="closeProductModal()">×</button>
+      <div class="modal-body">
+        <img id="modal-img" alt="image produit">
+        <div class="modal-info">
+          <h2 id="modal-name"></h2>
+          <p id="modal-desc" class="muted"></p>
+          <div class="modal-meta">
+            <div class="price" id="modal-price"></div>
+            <div class="meta" id="modal-category"></div>
+          </div>
+          <div class="modal-actions">
+            <label>Quantité <input id="modal-qty" type="number" min="1" value="1"></label>
+            <button class="btn" id="modal-add">Ajouter au panier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

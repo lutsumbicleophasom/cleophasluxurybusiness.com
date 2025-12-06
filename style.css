@@ -1,0 +1,112 @@
+/* style.css - thème sombre + version claire possible via .light-theme sur <body> */
+/* Variables */
+:root{
+  --bg:#06060a;
+  --card:#0b0e13;
+  --muted:#9fa7b3;
+  --gold:#d4af37;
+  --glass:rgba(255,255,255,0.03);
+  --accent-gradient: linear-gradient(90deg, rgba(212,175,55,0.95), rgba(255,218,121,0.9));
+  --transition: 260ms cubic-bezier(.2,.9,.2,1);
+  --radius:12px;
+  --max-width:1200px;
+}
+
+/* Light theme overrides (applique .light-theme to body) */
+body.light-theme{
+  --bg: #fbfaf8;
+  --card: #fff;
+  --muted: #6b6f75;
+  --glass: rgba(0,0,0,0.03);
+  color: #071022;
+}
+
+/* Global */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg), #0b0e13);font-family:Inter, system-ui, Arial; color: #fff;scroll-behavior:smooth}
+.muted{color:var(--muted)}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+/* Header */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;backdrop-filter:blur(6px);position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+.brand{display:flex;align-items:center;gap:12px}
+.logo-link{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+.brand-title{font-weight:800;letter-spacing:0.2px}
+.brand-sub{font-size:12px;color:var(--muted)}
+.controls{display:flex;gap:10px;align-items:center}
+
+/* Input / select */
+.search-wrap input[type="search"]{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;width:230px;outline:none;transition:box-shadow var(--transition)}
+.search-wrap input:focus{box-shadow:0 6px 30px rgba(0,0,0,0.6)}
+.category-wrap select{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+
+/* Buttons */
+.btn{background:var(--gold);color:#071022;padding:10px 14px;border-radius:10px;border:none;font-weight:700;cursor:pointer;transition:transform var(--transition)}
+.btn.small{padding:8px 10px;font-size:14px}
+.outline{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:36px 24px;align-items:center}
+.hero-left h1{font-size:40px;margin:0;color:var(--gold)}
+.hero-left p{margin:10px 0 18px;color:var(--muted)}
+.hero-media img{width:100%;border-radius:14px;box-shadow:0 18px 50px rgba(2,6,12,0.6)}
+
+/* Section title */
+.section-title{padding:18px 24px;margin-top:6px}
+
+/* Grid */
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:10px 24px 60px;max-width:var(--max-width);margin:0 auto}
+.product-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.03);transition:transform var(--transition), box-shadow var(--transition)}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(2,8,23,0.6)}
+.product-media{height:220px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#071022,#0b1630)}
+.product-media img{width:100%;height:100%;object-fit:cover;display:block}
+.product-title{font-weight:700;margin:8px 0 2px}
+.meta{font-size:13px;color:var(--muted)}
+.price{color:var(--gold);font-weight:800;font-size:18px;margin-top:6px}
+
+/* actions row */
+.card-actions{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.card-actions .left{display:flex;gap:8px}
+
+/* Bandeau bijoux */
+.bandeau{margin:30px 24px;padding:26px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg, rgba(212,175,55,0.06), transparent)}
+.bandeau h3{margin:0;color:var(--gold)}
+
+/* Footer */
+.site-footer{padding:26px 24px;border-top:1px solid rgba(255,255,255,0.02);text-align:center;color:var(--muted)}
+
+/* Cart sidebar */
+.cart-sidebar{position:fixed;right:-420px;top:0;height:100%;width:380px;background:var(--card);box-shadow:-20px 0 40px rgba(0,0,0,0.6);transition:right 320ms cubic-bezier(.2,.9,.2,1);padding:18px;z-index:80}
+.cart-sidebar.open{right:0}
+.cart-header{display:flex;justify-content:space-between;align-items:center}
+.cart-items{margin-top:16px;max-height:58vh;overflow:auto}
+.cart-row{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+.cart-row img{width:68px;height:52px;object-fit:cover;border-radius:8px}
+.cart-summary{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-weight:800}
+.cart-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+
+/* Modal product */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:90;padding:20px}
+.modal.open{display:flex}
+.modal-panel{background:var(--card);padding:18px;border-radius:14px;max-width:920px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.03)}
+.modal-body{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.modal-body img{width:100%;height:420px;object-fit:cover;border-radius:10px}
+.modal-info h2{margin:0}
+.modal-meta{display:flex;gap:12px;align-items:center;margin-top:8px}
+.modal-actions{display:flex;gap:10px;align-items:center;margin-top:12px}
+
+/* Responsive */
+@media (max-width:1000px){.products-grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr} .modal-body{grid-template-columns:1fr}}
+@media (max-width:640px){.products-grid{grid-template-columns:1fr} .controls{display:flex;flex-direction:column;gap:8px} .search-wrap input{width:100%} .modal-body{grid-template-columns:1fr} .modal-body img{height:260px} }
+
+/* Gold animated accent (subtle) */
+@keyframes goldPulse {
+  0%{filter:drop-shadow(0 0 0 rgba(212,175,55,0.0))}
+  50%{filter:drop-shadow(0 6px 18px rgba(212,175,55,0.08))}
+  100%{filter:drop-shadow(0 0 0 rgba(212,175,55,0.0))}
+}
+.brand-title{animation:goldPulse 3s infinite}
+
+/* Small helpers */
+.hidden{display:none}
+.center{display:flex;align-items:center;justify-content:center}
